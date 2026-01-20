@@ -1,0 +1,3 @@
+SaveScreenshotPanelScript has been replaced with SaveScreenshotUIScript which is at a different level of hierarchy to avoid subscription issues. There are demo prefabs showcasing this change.
+
+SaveScreenshotPanelScript will continue to work. Migration is only necessary to avoid having the ScreenshotTaken delegate called multiple times.

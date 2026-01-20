@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1b3b4b945939a54ea0b23d3396115fb, type: 3}
+  m_Name: Spine_UI_Resource_Gold_SkeletonData
+  m_EditorClassIdentifier: 
+  atlasAssets:
+  - {fileID: 11400000, guid: 7aa88f092291dd3429b83beab0d1f13b, type: 2}
+  scale: 0.01
+  skeletonJSON: {fileID: 4900000, guid: eae5a70d8582d6146b19e291d0df8af6, type: 3}
+  isUpgradingBlendModeMaterials: 0
+  blendModeMaterials:
+    requiresBlendModeMaterials: 1
+    applyAdditiveMaterial: 1
+    additiveMaterials:
+    - pageName: Spine_UI_Resource_Gold.png
+      material: {fileID: 2100000, guid: 7f2b4de33f13b3c4ba5a2ec28b203197, type: 2}
+    multiplyMaterials:
+    - pageName: Spine_UI_Resource_Gold.png
+      material: {fileID: 2100000, guid: 60a0a2e37396e054ca6928fc4b1c00cc, type: 2}
+    screenMaterials: []
+  skeletonDataModifiers: []
+  fromAnimation: []
+  toAnimation: []
+  duration: []
+  defaultMix: 0.2
+  controller: {fileID: 0}

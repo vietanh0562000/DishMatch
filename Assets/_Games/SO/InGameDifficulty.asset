@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602c238a4e1493448ba51123098d9c4d, type: 3}
+  m_Name: InGameDifficulty
+  m_EditorClassIdentifier: 
+  DifficultySprites:
+  - Name: TopBG
+    _items:
+    - Difficulty: 0
+      Details: {fileID: 21300000, guid: 614672fcdc8ab134e9c037e85f90178f, type: 3}
+    - Difficulty: 1
+      Details: {fileID: 21300000, guid: 614672fcdc8ab134e9c037e85f90178f, type: 3}
+    - Difficulty: 2
+      Details: {fileID: 21300000, guid: cf2f823dd4e319142a6b5b5f8bfdeaac, type: 3}
+    - Difficulty: 3
+      Details: {fileID: 21300000, guid: d1455fe86f3c9b94689974b41c9f0016, type: 3}
+  - Name: RetryButton
+    _items:
+    - Difficulty: 0
+      Details: {fileID: 21300000, guid: 6a15f9785e1ca874d992ca1bcb284b8a, type: 3}
+    - Difficulty: 1
+      Details: {fileID: 21300000, guid: 6a15f9785e1ca874d992ca1bcb284b8a, type: 3}
+    - Difficulty: 2
+      Details: {fileID: 21300000, guid: a2c99be8b42b71d4497519aae84b0123, type: 3}
+    - Difficulty: 3
+      Details: {fileID: 21300000, guid: c01d94056bcbecc4ca766c1de7fa8f69, type: 3}
+  - Name: BoosterButton
+    _items:
+    - Difficulty: 0
+      Details: {fileID: 21300000, guid: 1d5d3988901ac114bbf4b60028550829, type: 3}
+    - Difficulty: 1
+      Details: {fileID: 21300000, guid: 1d5d3988901ac114bbf4b60028550829, type: 3}
+    - Difficulty: 2
+      Details: {fileID: 21300000, guid: e7ac46842f6b2414fba3a76d60a22263, type: 3}
+    - Difficulty: 3
+      Details: {fileID: 21300000, guid: 74a8fb988d73ef94abd0d4c5fa58284f, type: 3}
+  DifficultyMaterials:
+  - Name: TopPanel
+    _items:
+    - Difficulty: 0
+      Details: {fileID: 2100000, guid: f9d35cb7255728343835b84a174bb4d5, type: 2}
+    - Difficulty: 1
+      Details: {fileID: 2100000, guid: f9d35cb7255728343835b84a174bb4d5, type: 2}
+    - Difficulty: 2
+      Details: {fileID: 2100000, guid: 95bab5949d32dfd49a20cc5336fb64b2, type: 2}
+    - Difficulty: 3
+      Details: {fileID: 2100000, guid: 381aa9d7a67f9bf479c747cfe4e09c7d, type: 2}

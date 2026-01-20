@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01d4fba99dc7b5d4abfe6a163b90ecf4, type: 3}
+  m_Name: UITransitionConfig
+  m_EditorClassIdentifier: 
+  _background: {fileID: 21300000, guid: 204ae8bb4625c9e4693326ca2910a7fa, type: 3}
+  _progressBar: {fileID: 21300000, guid: 4bacf307f5b2cde4e94b855e25680a5b, type: 3}
+  _progressBarBG: {fileID: 21300000, guid: b9e23dfa1ad71b84fa286c3e59198dfa, type: 3}
+  _animationSpeed: 0.3
+  _pausePoints:
+  - position: 0.15
+    offset: 0.021
+  - position: 0.5
+    offset: 0.071
+  - position: 0.6
+    offset: 0.012
+  - position: 0.7
+    offset: 0.015
+  _irisWipeBG: {fileID: 21300000, guid: 204ae8bb4625c9e4693326ca2910a7fa, type: 3}
+  _irisWipeLogo: {fileID: 21300000, guid: b1417335f5f0714429204f692aa0746f, type: 3}
+  _wipeInDurationBG: 0.7
+  _wipeOutDurationBG: 0.256
+  _wipeInDurationLogo: 0.3
+  _wipeOutDurationLogo: 0.35
+  _wipeInDelayScaleLogo: 0.47
+  _logoScaleInCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.40479398
+      value: 1.0785115
+      inSlope: 0.198173
+      outSlope: 0.198173
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.64856875
+    - serializedVersion: 3
+      time: 0.7192696
+      value: 0.90965486
+      inSlope: -0.10366449
+      outSlope: -0.10366449
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.32177934
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.38112321
+      outSlope: 0.38112321
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.6304702
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _logoScaleOutCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: -1.1508945
+      outSlope: -1.1508945
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.11583992
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _fadeDuration: 1

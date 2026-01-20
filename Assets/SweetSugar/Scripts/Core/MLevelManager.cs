@@ -275,26 +275,7 @@ namespace SweetSugar.Scripts.Core
                             preFailedGameObject.SetActive(true);
                         });
                         break;
-                    case GameState.Map://map state
-                        //open map or test level
-                        if (PlayerPrefs.GetInt("OpenLevelTest") <= 0 || FindObjectOfType<RestartLevel>())
-                        {
-                            EnableMap(true);
-                            OnMapState?.Invoke();
-                        }
-                        else
-                        {
-                            THIS.gameStatus = GameState.PrepareGame;
-                            if (!testByPlay)
-                                PlayerPrefs.SetInt("OpenLevelTest", 0);
-                            PlayerPrefs.Save();
-                        }
-                        if (CrosssceneData.passLevelCounter > 0 && InitScript.Instance.ShowRateEvery > 0)
-                        {
-                            if (CrosssceneData.passLevelCounter % InitScript.Instance.ShowRateEvery == 0 &&
-                                InitScript.Instance.ShowRateEvery > 0 && PlayerPrefs.GetInt("Rated", 0) == 0)
-                                InitScript.Instance.ShowRate();
-                        }
+                    case GameState.Map://map stat
                         break;
                     case GameState.Playing://playing state
                         StartCoroutine(AI.THIS.CheckPossibleCombines());
@@ -387,21 +368,26 @@ namespace SweetSugar.Scripts.Core
         //enable map
         public void EnableMap(bool enable)
         {
-            GetComponent<Camera>().orthographicSize = 5.3f;
+            GetComponent<Camera>().orthographicSize = enable ? 5.3f : 4;
+    
             if (enable)
             {
-                GetComponent<Camera>().GetComponent<MapCamera>()
-                    .SetPosition(new Vector2(0, GetComponent<Camera>().transform.position.y));
-                if (FindObjectOfType<RestartLevel>() == null && DebugSettings.AI && DebugSettings.testLevel > 0)
+                // Map enabling logic - skip if no map in scene
+                if (LevelsMap != null)
                 {
-                    PlayerPrefs.SetInt("OpenLevel", DebugSettings.testLevel);
-                    RestartLevel();
+                    GetComponent<Camera>().GetComponent<MapCamera>()
+                        .SetPosition(new Vector2(0, GetComponent<Camera>().transform.position.y));
+                    if (FindObjectOfType<RestartLevel>() == null && DebugSettings.AI && DebugSettings.testLevel > 0)
+                    {
+                        PlayerPrefs.SetInt("OpenLevel", DebugSettings.testLevel);
+                        RestartLevel();
+                    }
                 }
             }
             else
             {
-                GetComponent<Camera>().orthographicSize = 4;
-                if(ServerTime.THIS.dateReceived)
+                // Game enabling logic
+                if(ServerTime.THIS != null && ServerTime.THIS.dateReceived)
                     InitScript.DateOfExit = ServerTime.THIS.serverTime.ToString();
                 MenuReference.THIS.GetComponent<GraphicRaycaster>().enabled = false;
                 MenuReference.THIS.GetComponent<GraphicRaycaster>().enabled = true;
@@ -409,13 +395,22 @@ namespace SweetSugar.Scripts.Core
                 Level.transform.Find("Canvas").GetComponent<GraphicRaycaster>().enabled = true;
             }
 
-            Camera.main.GetComponent<MapCamera>().enabled = enable;
-            LevelsMap.SetActive(!enable);
-            LevelsMap.SetActive(enable);
+            // Only manipulate map camera and objects if they exist
+            var mapCamera = Camera.main.GetComponent<MapCamera>();
+            if (mapCamera != null)
+                mapCamera.enabled = enable;
+    
+            if (LevelsMap != null)
+            {
+                LevelsMap.SetActive(!enable);
+                LevelsMap.SetActive(enable);
+            }
+    
             Level.SetActive(!enable);
 
             if (!enable)
                 Camera.main.transform.position = new Vector3(0, 0, -10) - (Vector3)orientationGameCameraHandle.offsetFieldPosition;
+    
             foreach (var item in fieldBoards)
             {
                 if (item != null)
@@ -427,38 +422,23 @@ namespace SweetSugar.Scripts.Core
         {
             THIS = this;
             testByPlay = false;
-            // testByPlay = true;//enable to instant level run
+    
+            // Disable map-related objects
+            if (LevelsMap != null)
+                LevelsMap.SetActive(false);
         }
 
         // Use this for initialization
         private void Start()
         {
             DebugSettings = Resources.Load<DebugSettings>("Scriptable/DebugSettings");
-            LeanTween.init( 800 );
+            LeanTween.init(800);
             LeanTween.reset();
-#if FACEBOOK
-            FacebookEnable = true;
-            if (FacebookEnable && (!NetworkManager.THIS?.IsLoggedIn ?? false))
-                FacebookManager.THIS.CallFBInit();
-            else Debug.LogError("Facebook not initialized, please, install database service");
-#else
-        FacebookEnable = false;
 
-#endif
-#if UNITY_PURCHASING && UNITY_INAPPS
-            gameObject.AddComponent<UnityInAppsIntegration>();
-            enableInApps = true;
-#else
-        enableInApps = false;
-
-#endif
-
-//        if (!THIS.enableInApps)
-//            GameObject.Find("CanvasMap/SafeArea/Gems").gameObject.SetActive(false);
-
-            gameStatus = GameState.Map;
+            // Start directly in PrepareGame state instead of Map
+            this.gameStatus = GameState.PrepareGame;
+    
             winRewardAmount = Resources.Load<WinReward>("Scriptable/WinReward").winRewardAmount;
-
         }
 
         private void PrepareGame()

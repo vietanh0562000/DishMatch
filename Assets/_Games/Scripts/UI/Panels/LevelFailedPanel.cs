@@ -106,7 +106,7 @@ namespace PuzzleGames
                 Action loadScene = () =>
                 {
                     Destroy(PoolHolder.PoolTransform.gameObject);
-                    LoadSceneManager.Instance.LoadScene("GamePlay");
+                    LoadSceneManager.Instance.LoadScene("game");
                 };
 
                 if (ServerConfig.Instance<ValueRemoteConfig>().showInterstitialWhenRetry)

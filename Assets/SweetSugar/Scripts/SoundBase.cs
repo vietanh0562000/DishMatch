@@ -47,18 +47,19 @@ namespace SweetSugar.Scripts
         void Awake()
         {
 
-            _audioSource = GetComponent<AudioSource>();
-            audioMixer = _audioSource.outputAudioMixerGroup.audioMixer;
-            if (transform.parent == null)
-            {
-                transform.parent = Camera.main.transform;
-                transform.localPosition = Vector3.zero;
-            }
-            // DontDestroyOnLoad(gameObject);
             if (Instance == null)
+            {
                 Instance = this;
+                DontDestroyOnLoad(gameObject);
+                
+                _audioSource = GetComponent<AudioSource>();
+                if (_audioSource.outputAudioMixerGroup != null)
+                    audioMixer = _audioSource.outputAudioMixerGroup.audioMixer;
+            }
             else if (Instance != this)
+            {
                 Destroy(gameObject);
+            }
 
         }
 

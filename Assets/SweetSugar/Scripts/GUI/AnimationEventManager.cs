@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
+using PuzzleGames;
 using SweetSugar.Scripts.AdsEvents;
 using SweetSugar.Scripts.Core;
 using SweetSugar.Scripts.GUI.Boost;
@@ -13,6 +14,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using GameState = SweetSugar.Scripts.Core.GameState;
 
 #if UNITY_ADS
 using UnityEngine.Advertisements;
@@ -319,6 +321,11 @@ namespace SweetSugar.Scripts.GUI
                 menu.SetActive(true);
         }
 
+        public void GoHome()
+        {
+            LoadSceneManager.Instance.LoadScene("Home");
+        }
+
         public IEnumerator Close()
         {
             yield return new WaitForSeconds(0.5f);
@@ -430,7 +437,7 @@ namespace SweetSugar.Scripts.GUI
         {
             SoundBase.Instance.PlayOneShot(SoundBase.Instance.click);
 
-            CloseMenu();
+            LoadSceneManager.Instance.LoadScene("Home");
         }
 
         [UsedImplicitly]
@@ -536,9 +543,10 @@ namespace SweetSugar.Scripts.GUI
         public void BuyBoost(BoostType boostType, int price, int count, Action callback)
         {
             SoundBase.Instance.PlayOneShot(SoundBase.Instance.click);
-            if (InitScript.Gems >= price)
+            var gold = ResourceType.Gold.Manager();
+            if (gold.GetAmount() >= price)
             {
-                InitScript.Instance.SpendGems(price);
+                gold.Subtract(price);
                 InitScript.Instance.BuyBoost(boostType, price, count);
                 callback?.Invoke();
                 //InitScript.Instance.SpendBoost(boostType);
@@ -546,7 +554,7 @@ namespace SweetSugar.Scripts.GUI
             }
             else
             {
-                BuyGems();
+                CloseMenu();
             }
         }
 

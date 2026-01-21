@@ -75,7 +75,9 @@ namespace PuzzleGames
 			var levelJson=LoadLevelManager.instance.ReadLevelData(level);
 			TempDataHandler.Set(TempDataKeys.CURRENT_LEVEL_JSON_DATA,levelJson);
 			TempDataHandler.Set(TempDataKeys.CURRENT_LEVEL_FROM_HOME,level);
-			LoadSceneManager.Instance.LoadScene("GamePlay");
+			PlayerPrefs.SetInt("OpenLevel", level);
+			PlayerPrefs.Save();
+			LoadSceneManager.Instance.LoadScene("game");
 		}
 
 

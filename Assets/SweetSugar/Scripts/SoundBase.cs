@@ -50,7 +50,7 @@ namespace SweetSugar.Scripts
             if (Instance == null)
             {
                 Instance = this;
-                DontDestroyOnLoad(gameObject);
+                //DontDestroyOnLoad(gameObject);
                 
                 _audioSource = GetComponent<AudioSource>();
                 if (_audioSource.outputAudioMixerGroup != null)

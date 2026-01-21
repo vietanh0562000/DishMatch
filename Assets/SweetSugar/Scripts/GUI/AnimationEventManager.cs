@@ -435,6 +435,7 @@ namespace SweetSugar.Scripts.GUI
 
         public void Next()
         {
+            LevelDataController.instance.CompleteLevel();
             SoundBase.Instance.PlayOneShot(SoundBase.Instance.click);
 
             LoadSceneManager.Instance.LoadScene("Home");

@@ -44,30 +44,9 @@ MonoBehaviour:
     GoldValue: 25000
     BonusValue: 25000
   StandardPackBundles:
-  - ID: 12
-    Prefab: {fileID: 4188598907181486430, guid: a6ac3a0521edacf49a5dbccf8a770450, type: 3}
-    bundleName: No Ads Bundle
-    Price: 12.99
-    RemoveAds: 1
-    Resources:
-    - type: 1
-      value: 1000
-    - type: 4
-      value: 5
-    - type: 5
-      value: 5
-    - type: 3
-      value: 5
-    InfiResources: []
-  - ID: 11
-    Prefab: {fileID: 4521086255938998407, guid: 8496da9dfb8b99a48830966283149d57, type: 3}
-    bundleName: No ads
-    Price: 7.99
-    RemoveAds: 1
-    Resources: []
-    InfiResources: []
   - ID: 7
-    Prefab: {fileID: 1756297975912427929, guid: d8c453f7dd4874648b88549de61cff72, type: 3}
+    Prefab: {fileID: 1756297975912427929, guid: d8c453f7dd4874648b88549de61cff72,
+      type: 3}
     bundleName: Small Bundle
     Price: 9.99
     RemoveAds: 0
@@ -78,7 +57,8 @@ MonoBehaviour:
     - type: 0
       value: 60
   - ID: 8
-    Prefab: {fileID: 6524903131130173393, guid: 3b62e074af1159247a6748a930fa0aa2, type: 3}
+    Prefab: {fileID: 6524903131130173393, guid: 3b62e074af1159247a6748a930fa0aa2,
+      type: 3}
     bundleName: Big Bundle
     Price: 19.99
     RemoveAds: 0
@@ -95,7 +75,8 @@ MonoBehaviour:
     - type: 0
       value: 180
   - ID: 9
-    Prefab: {fileID: 7224942606509046359, guid: a7f5cfe8458cfbd48a36ebd3db03df8a, type: 3}
+    Prefab: {fileID: 7224942606509046359, guid: a7f5cfe8458cfbd48a36ebd3db03df8a,
+      type: 3}
     bundleName: Ultra Bundle
     Price: 29.99
     RemoveAds: 0

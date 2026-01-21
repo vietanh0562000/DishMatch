@@ -30,7 +30,7 @@ namespace SweetSugar.Scripts
                 Instance = this;
             else if (Instance != this)
                 Destroy(gameObject);
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
         }
 
         private void Start()

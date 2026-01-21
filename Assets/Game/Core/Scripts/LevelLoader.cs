@@ -71,6 +71,16 @@ namespace PuzzleGames
 		/// </summary>
 		public static void LoadLevel(int level)
 		{
+			var heart = ResourceType.Heart.Manager();
+			if (heart.GetAmount() <= 0 || !heart.IsInFreeMode)
+			{
+				UIToastManager.Instance.Show("You don't have any hearts yet");
+			}
+
+			if (!heart.IsInFreeMode)
+			{
+				heart.Subtract(1);
+			}
 			Destroy(PoolHolder.PoolTransform.gameObject);
 			var levelJson=LoadLevelManager.instance.ReadLevelData(level);
 			TempDataHandler.Set(TempDataKeys.CURRENT_LEVEL_JSON_DATA,levelJson);
